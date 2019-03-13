@@ -1,0 +1,10 @@
+<h1>Restaurants</h1>
+<% @restaurants.each do |rest| %>
+  <h3>Name
+  <a href="/restaurants/<%=rest.id%>"><%= rest.name %></a></h3>
+  <h5>Address
+  <%= rest.address %></h5>
+  <h5>Rating
+  <%= rest.rating %></h5>
+  <br><br>
+<% end %>
