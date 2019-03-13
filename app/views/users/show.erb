@@ -1,0 +1,5 @@
+<h1><%=@user.name%></h1>
+
+<%@user.restaurants.each do |rest|%>
+  <h4><a href="/restaurants/<%=rest.id%>"><%=rest.name%></a></h4>
+<% end %>
