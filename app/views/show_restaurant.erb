@@ -1,0 +1,17 @@
+<h1>Restaurant name: <%= @restaurant.name %></h1>
+<h3>Restaurant rating: <%= @restaurant.rating %></h3>
+<h3>Restaurant address: <%= @restaurant.address %></h3>
+<ul>
+<% @restaurant.users.each do |user| %>
+  <li><a href="/users/<%= user.id %>"><%= user.name %></a></li>
+<% end %>
+</ul>
+<form action="/add_user" method="POST">
+<select name="user_id">
+<% @users.each do |user| %>
+  <option value=<%= user.id %>><%= user.name %></option>
+<% end %>
+</select>
+<input type="hidden" name="restaurant[id]" value="<%= @restaurant.id %>">
+<input type="submit" value="Submit">
+</form>
