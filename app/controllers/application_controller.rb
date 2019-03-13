@@ -6,6 +6,12 @@ class ApplicationController < Sinatra::Base
     "Hi"
   end
 
+  post '/add_user' do
+    # binding.pry
+    Visit.find_or_create_by(restaurant_id: params["restaurant"]["id"], user_id: params["user_id"])
+    redirect to "/restaurants/#{params["restaurant"]["id"]}"
+  end
+
   get '/restaurants/new' do
 
     erb :new_restaurant
@@ -13,7 +19,7 @@ class ApplicationController < Sinatra::Base
 
   get '/restaurants/:id' do
     @restaurant = Restaurant.find(params[:id])
-
+    @users = User.all
     erb :show_restaurant
   end
 
@@ -47,7 +53,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users' do
-    @users = User.all 
-    erb :all_users  
+    @users = User.all
+    erb :all_users
   end
 end
